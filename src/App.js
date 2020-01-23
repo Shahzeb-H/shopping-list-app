@@ -3,10 +3,11 @@ import Lists from './Lists';
 import AddItem from './AddItem';
 
 class App extends React.Component{
+  userData;
   state = {
     items : [
       {id : 1, content : "Buy milk"},
-      {id : 2, content : "Play games"}
+      {id : 2, content : "Buy eggs"}
     ]
   }
   addItem = (a) => {
@@ -16,6 +17,26 @@ class App extends React.Component{
     items : b
   })
 }
+
+//React Life Cycle
+componentDidMount(){
+  this.userData = JSON.parse(localStorage.getItem("user"));
+  if (localStorage.getItem("user")){
+    this.setState({
+      content: this.userData.content
+    })
+  }
+  else{
+    this.setState({
+      content: null
+    })
+  }
+}
+
+componentWillUpdate(nextProps, nextState){
+  localStorage.setItem("user", JSON.stringify(nextState));
+}
+
 render(){
     return (
       <div>

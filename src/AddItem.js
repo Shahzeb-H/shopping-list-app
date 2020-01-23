@@ -4,6 +4,7 @@ class AddItem extends React.Component{
   state = {
     content : ""
   }
+
   handleChange = (e) => {
     this.setState({
       content : e.target.value
@@ -16,6 +17,7 @@ class AddItem extends React.Component{
       content : ""
     });
   }
+
   render(){
     return(
       <div>
